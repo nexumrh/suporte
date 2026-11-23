@@ -4067,7 +4067,7 @@ function blocoAsaasChave(){
     ${i.final?`<div class="msg mb">Chave salva: <b class="mono">…${esc(i.final)}</b> · ambiente <b>${i.ambiente==='producao'?'PRODUÇÃO (cobranças reais)':'Testes (sandbox)'}</b> · ${fmtDT(i.em)} por ${esc(i.por||'')}</div>`:''}
     <div class="grid g2">
       <label>Ambiente<select id="asAmb"><option value="sandbox" ${i.ambiente!=='producao'?'selected':''}>Testes (sandbox.asaas.com)</option><option value="producao" ${i.ambiente==='producao'?'selected':''}>Produção (asaas.com — cobranças reais)</option></select></label>
-      <label>Chave de API do Asaas<input id="asChave" type="password" autocomplete="off" placeholder="${i.final?'deixe vazio para manter a atual':'cole a chave ($aact_...)'}"></label>
+      <label>Chave de API do Asaas<input id="asChave" type="password" autocomplete="new-password" placeholder="${i.final?'deixe vazio para manter a atual':'cole a chave ($aact_...)'}"></label>
     </div>
     <div class="row mt"><button class="btn gold" data-act="salvarChaveAsaas">Salvar no cofre</button><button class="btn" data-act="testarAsaas" ${servLigado()?'':'disabled'}>Testar a chave</button><button class="btn" data-act="novoTokenWebhook">Gerar token do webhook</button>
       ${i.final?`<button class="btn sm red" data-act="apagarChaveAsaas">Apagar do cofre</button>`:''}</div>
@@ -4734,7 +4734,7 @@ PAGES.config = async () => {
   </div></div>
   <div class="card mt"><h2>Inteligência artificial (leitura de documento e biometria)</h2>
     <div class="grid g2">
-      <label>Chave do Groq<input data-cfg="iaChave" type="password" value="${esc(c.iaChave||'')}" placeholder="gsk_..." autocomplete="off"></label>
+      <label>Chave do Groq<input data-cfg="iaChave" type="password" value="${esc(c.iaChave||'')}" placeholder="gsk_..." autocomplete="new-password"></label>
       <label>Modelo<input data-cfg="iaModelo" value="${esc(c.iaModelo||'qwen/qwen3.8-27b')}"></label>
     </div>
     <div class="row mt"><button class="btn sm" data-act="testarIA">Testar chave</button><span class="small muted" id="iaTeste">${c.iaChave?'Chave salva.':'Sem chave: o vendedor digita os dados do documento.'}</span></div>
@@ -9642,7 +9642,7 @@ PAGES.crm=async()=>{
   v.querySelector('.bk-hero').insertAdjacentHTML('afterend',`<div class="card mb" id="iaAutoCard"><div class="row" style="justify-content:space-between;align-items:flex-start;gap:12px"><div style="flex:1;min-width:260px"><h2 style="margin:0 0 4px">IA autônoma NexumCell</h2>
     <p class="small muted" style="margin:0">Uma segunda IA (Groq) que trabalha sozinha no servidor a cada 15 minutos, sem depender de você: decide as <b>aprovações</b> pelas regras (liberação 24 h, liberação definitiva, baixa com desconto), responde as <b>pré-análises online</b> em até 15 minutos, inclui na <b>lista negra</b> quem deu golpe e manda o <b>aviso automático</b> do atendimento. O que for duvidoso fica para você, com o parecer dela.</p></div>
     <div class="row" style="gap:8px"><button class="btn" data-act="bkIaRodar">Rodar agora</button></div></div>
-    <div class="grid g4 mt"><label>Chave do Groq da IA autônoma<input id="iaK2" type="password" placeholder="gsk_… (fica guardada só no servidor)" autocomplete="off"></label>
+    <div class="grid g4 mt"><label>Chave do Groq da IA autônoma<input id="iaK2" type="password" placeholder="gsk_… (fica guardada só no servidor)" autocomplete="new-password"></label>
       <label>IA autônoma<select id="iaOn"><option value="sim">Ligada</option><option value="nao" ${S.cfg.iaAutonoma==='nao'?'selected':''}>Desligada</option></select></label>
       <label>Lista negra automática<select id="iaLn"><option value="sim">Ligada</option><option value="nao" ${S.cfg.listaNegraAuto==='nao'?'selected':''}>Desligada</option></select></label>
       <label>&nbsp;<button class="btn gold" data-act="bkIaSalvar">Salvar IA autônoma</button></label></div>
